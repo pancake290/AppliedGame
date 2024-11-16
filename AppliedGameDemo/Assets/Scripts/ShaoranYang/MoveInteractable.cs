@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCard : MonoBehaviour
+public class MoveInteractable : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask layerMask;
 
     private void OnMouseDrag()
     {
-        if (this.tag == "Card")
+        if (this.tag == "Interactable")
         {
             //this.GetComponent<Rigidbody>().isKinematic = true;
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
