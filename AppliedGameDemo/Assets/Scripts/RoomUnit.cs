@@ -11,6 +11,7 @@ public class RoomUnit : MonoBehaviour
 
     // 房间内的敌人列表
     public List<Enemy> enemiesInRoom = new List<Enemy>();
+    public List<GameObject> trashInRoom = new List<GameObject>();
 
     private void Awake()
     {
@@ -34,6 +35,14 @@ public class RoomUnit : MonoBehaviour
             if (!enemiesInRoom.Contains(enemy))
             {
                 enemiesInRoom.Add(enemy);
+                //enemy.SetCurrentRoom(this);
+            }
+        }
+        if (other.tag == "Trash") 
+        {
+            if (!trashInRoom.Contains(other.gameObject))
+            {
+                trashInRoom.Add(other.gameObject);
                 //enemy.SetCurrentRoom(this);
             }
         }

@@ -7,11 +7,15 @@ public class MoveInteractable : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask layerMask;
 
+    private void Awake()
+    {
+        mainCamera = Camera.main;
+    }
     private void OnMouseDrag()
     {
-        if (this.tag == "Interactable")
+        if (this.CompareTag("Interactable"))
         {
-            //this.GetComponent<Rigidbody>().isKinematic = true;
+            this.GetComponent<Rigidbody>().isKinematic = true;
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask))
             {
@@ -19,5 +23,12 @@ public class MoveInteractable : MonoBehaviour
             }
         }
 
+    }
+    private void OnMouseUp()
+    {
+        if (this.CompareTag("Interactable"))
+        {
+            this.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 }
