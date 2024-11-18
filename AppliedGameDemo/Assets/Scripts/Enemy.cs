@@ -28,36 +28,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (isPickedUp)
-        {
-            // 敌人跟随鼠标移动
-            FollowMouse();
-
-            // 检测玩家是否点击鼠标左键放下敌人
-            if (Input.GetMouseButtonUp(0))
-            {
-                // 从摄像机向鼠标位置发射射线
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                {
-                    // 检查射线击中的是否是房间的 Collider
-                    RoomUnit room = hit.collider.GetComponent<RoomUnit>();
-                    if (room != null)
-                    {
-                        // 放下敌人到点击的位置
-                        PutDown(hit.point);
-                    }
-                    else
-                    {
-                        // 点击的位置不是房间，不能放下敌人
-                        Debug.Log("无法在此位置放下敌人，请选择房间内的位置。");
-                    }
-                }
-            }
-        }
-        else
-        {
+        
             // 敌人在房间内随机移动的逻辑（保持不变）
             if (!isMoving && currentRoom != null)
             {
@@ -74,7 +45,7 @@ public class Enemy : MonoBehaviour
             {
                 isMoving = false;
             }
-        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -124,64 +95,24 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // 抓起敌人
-    public void PickUp()
+    public void DisableAI()
     {
-        if (isPickedUp)
-            return;
-
-        isPickedUp = true;
         ai.canMove = false;
         ai.isStopped = true;
-        ai.enabled = false; // 禁用 AI 移动
-
-        // 记录原本的 Y 轴高度
-        originalY = transform.position.y;
-
-        // 增加 Y 轴高度
-        transform.position = new Vector3(transform.position.x, originalY + pickUpHeight, transform.position.z);
-        this.GetComponent<BoxCollider>().enabled = false;
+        ai.enabled = false;
     }
 
-    // 放下敌人
-    public void PutDown(Vector3 position)
+    public void EnableAI()
     {
-        isPickedUp = false;
         ai.canMove = true;
         ai.isStopped = false;
-        ai.enabled = true; // 启用 AI 移动
-
-        // 更新敌人的位置，保持 Y 轴高度不变
-        transform.position = new Vector3(position.x, originalY, position.z);
-        this.GetComponent<BoxCollider>().enabled = true;
-        ai.destination = this.transform.position;
+        ai.enabled = true;
     }
 
-    // 敌人跟随鼠标移动
-    private void FollowMouse()
+    public void SetDestination(Vector3 position)
     {
-        // 从摄像机向鼠标位置发射射线
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane plane = new Plane(Vector3.up, new Vector3(0, originalY + pickUpHeight, 0));
-        float distance;
-        if (plane.Raycast(ray, out distance))
-        {
-            Vector3 point = ray.GetPoint(distance);
-            transform.position = point;
-        }
-    }
-
-    // 当鼠标点击敌人时，抓起敌人
-    private void OnMouseDown()
-    {
-        if (!isPickedUp)
-        {
-            PickUp();
-        }
-        else
-        {
-            // 如果已经抓着敌人，点击其他敌人不会抓起新的敌人，而是放下当前的敌人
-            // 此处不需要处理，因为在 Update 中已经处理了放下敌人的逻辑
-        }
+        ai.destination = position;
+        ai.SearchPath();
+        isMoving = true;
     }
 }
