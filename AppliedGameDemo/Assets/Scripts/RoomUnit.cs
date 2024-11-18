@@ -10,7 +10,7 @@ public class RoomUnit : MonoBehaviour
     public List<RoomUnit> adjacentRooms = new List<RoomUnit>();
 
     // 房间内的敌人列表
-    public List<GameObject> enemiesInRoom = new List<GameObject>();
+    public List<Enemy> enemiesInRoom = new List<Enemy>();
 
     private void Awake()
     {
@@ -23,6 +23,32 @@ public class RoomUnit : MonoBehaviour
         else
         {
             Debug.LogError("房间缺少 BoxCollider");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            if (!enemiesInRoom.Contains(enemy))
+            {
+                enemiesInRoom.Add(enemy);
+                //enemy.SetCurrentRoom(this);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            if (enemiesInRoom.Contains(enemy))
+            {
+                enemiesInRoom.Remove(enemy);
+                //enemy.SetCurrentRoom(null);
+            }
         }
     }
 }
