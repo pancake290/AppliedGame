@@ -1204,8 +1204,10 @@ GameObject:
   - component: {fileID: 735554095953191608}
   - component: {fileID: 1970873350140779278}
   - component: {fileID: 1138866794973571187}
+  - component: {fileID: 6146646151292430148}
   - component: {fileID: 4357506089143955609}
   - component: {fileID: 399867747131750462}
+  - component: {fileID: 5224796131300106412}
   m_Layer: 0
   m_Name: Tarantula
   m_TagString: Untagged
@@ -1369,6 +1371,23 @@ MonoBehaviour:
   version: 1073741824
   target: {fileID: 0}
   useRotation: 0
+--- !u!114 &6146646151292430148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161876654933439832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f89beb341fbc4a43a9f671c14bfa3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnLogic: {fileID: 0}
+  currentRoom: {fileID: 0}
+  enemyType: 
+  isPerformAttack: 0
+  isPerformReproduce: 0
 --- !u!114 &4357506089143955609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,7 +1400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4903631cd6621a46a78dd4505179f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoom: {fileID: 0}
   minIdleTime: 1
   maxIdleTime: 3
   isPickedUp: 0
@@ -1399,6 +1417,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpHeight: 2
   dropHeight: -0.14
+--- !u!114 &5224796131300106412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161876654933439832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd743436610a97945abdb229f2c748e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spiderEgg: {fileID: 6227540361694882977, guid: 6fee66d179bba9a48b823f43875778b6,
+    type: 3}
 --- !u!1 &8588139243796084640
 GameObject:
   m_ObjectHideFlags: 0

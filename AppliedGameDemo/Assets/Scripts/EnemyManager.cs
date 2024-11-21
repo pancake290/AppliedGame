@@ -6,7 +6,7 @@ using System;
 public class EnemyManager : MonoBehaviour
 {
     private EnemyAIMovement movement;
-    private EnemyTurnLogic turnLogic;
+    public EnemyTurnLogic turnLogic;
 
     public RoomUnit currentRoom;
     public string enemyType;
@@ -48,11 +48,13 @@ public class EnemyManager : MonoBehaviour
 
     public void EnableMovement()
     {
+        if (movement == null) return;
         movement.EnableAI();
     }
 
     public void DisableMovement()
     {
+        if (movement == null) return;
         movement.DisableAI();
     }
 
@@ -71,7 +73,6 @@ public class EnemyManager : MonoBehaviour
                 break;
         }
     }
-
     public EnemyManager FindEnemyinMyRoom(EnemyManager mySelf, string type)
     {
         foreach (var enemy in currentRoom.enemiesInRoom)

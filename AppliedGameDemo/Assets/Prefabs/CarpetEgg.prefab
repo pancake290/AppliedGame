@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7582253255613612720}
   - component: {fileID: 5425769645738177538}
   - component: {fileID: 5392869351022738034}
+  - component: {fileID: 4662831650966754855}
+  - component: {fileID: 1620088352235566175}
   m_Layer: 0
   m_Name: CarpetEgg
   m_TagString: Untagged
@@ -148,3 +150,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpHeight: 2
   dropHeight: 0.69
+--- !u!114 &4662831650966754855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6227540361694882977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f89beb341fbc4a43a9f671c14bfa3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnLogic: {fileID: 0}
+  currentRoom: {fileID: 0}
+  enemyType: Spider_Egg
+  isPerformAttack: 0
+  isPerformReproduce: 0
+--- !u!114 &1620088352235566175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6227540361694882977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93675f6607044094ab153449a669444b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spiderAdult: {fileID: 6161876654933439832, guid: cfcad2a422913bc47bd99a39c230eb38,
+    type: 3}

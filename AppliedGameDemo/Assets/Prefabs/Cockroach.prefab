@@ -869,6 +869,8 @@ GameObject:
   - component: {fileID: 6148192440722564411}
   - component: {fileID: 409099083589205868}
   - component: {fileID: 6406971183539871276}
+  - component: {fileID: 5410693584098985783}
+  - component: {fileID: 1347187047999018489}
   m_Layer: 0
   m_Name: Cockroach
   m_TagString: Untagged
@@ -1044,7 +1046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4903631cd6621a46a78dd4505179f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentRoom: {fileID: 0}
   minIdleTime: 1
   maxIdleTime: 3
   isPickedUp: 0
@@ -1062,6 +1063,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpHeight: 2
   dropHeight: 0.21
+--- !u!114 &5410693584098985783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983969062710286050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f89beb341fbc4a43a9f671c14bfa3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnLogic: {fileID: 0}
+  currentRoom: {fileID: 0}
+  enemyType: Cockroach_Adult
+  isPerformAttack: 0
+  isPerformReproduce: 0
+--- !u!114 &1347187047999018489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983969062710286050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011f7343483f5c145af08c91d9779505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cockroachEgg: {fileID: 2156951324600858470, guid: 530dd9dfd72134547a1edba81004e69c,
+    type: 3}
 --- !u!1 &6281042591615163677
 GameObject:
   m_ObjectHideFlags: 0
