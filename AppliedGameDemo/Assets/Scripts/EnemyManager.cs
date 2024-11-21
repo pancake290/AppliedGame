@@ -5,18 +5,24 @@ using System;
 
 public class EnemyManager : MonoBehaviour
 {
-    private EnemyAIMovement movement;
+    public EnemyAIMovement movement;
     public EnemyTurnLogic turnLogic;
 
     public RoomUnit currentRoom;
     public string enemyType;
 
+    public bool isPerformMove = false;
     public bool isPerformAttack = false;
     public bool isPerformReproduce = false;
 
     private void Update()
     {
-        if(isPerformAttack == true)
+        if (isPerformMove == true)
+        {
+            PerformTurnPhase(TurnPhase.Move);
+            isPerformMove = false;
+        }
+        if (isPerformAttack == true)
         {
             PerformTurnPhase(TurnPhase.Attack);
             isPerformAttack = false;
@@ -73,7 +79,13 @@ public class EnemyManager : MonoBehaviour
                 break;
         }
     }
-    public EnemyManager FindEnemyinMyRoom(EnemyManager mySelf, string type)
+
+    public void MoveToRoom(RoomUnit targetRoom)
+    {
+        if (targetRoom == currentRoom) return;
+        movement.MoveToRoom(targetRoom);
+    }
+    public EnemyManager FindEnemyinMyRoom(EnemyManager mySelf, string type)//在自身所处房间里找第一个种类是type的enemy
     {
         foreach (var enemy in currentRoom.enemiesInRoom)
         {

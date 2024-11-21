@@ -16,12 +16,12 @@ public class Interactable : MonoBehaviour
     private float originalY;
 
     // 引用敌人组件（如果有）
-    private EnemyAIMovement enemyComponent;
+    private EnemyManager enemyManager;
 
     private void Start()
     {
         // 获取敌人组件（如果存在）
-        enemyComponent = GetComponent<EnemyAIMovement>();
+        enemyManager = GetComponent<EnemyManager>();
 
         // 初始化物体的原始高度
         originalY = transform.position.y;
@@ -62,16 +62,17 @@ public class Interactable : MonoBehaviour
     // 抓起物体
     public void PickUp()
     {
-        if (isPickedUp)
-            return;
+        if (isPickedUp) return;
 
         isPickedUp = true;
 
-        // 如果物体有敌人组件，禁用敌人的 AI 移动
-        if (enemyComponent != null)
+        // 如果物体有敌人组件，禁用敌人的 AI 移动，移出房间
+        if (enemyManager != null)
         {
-            enemyComponent.DisableAI();
+            enemyManager.DisableMovement();
+            enemyManager.currentRoom.RemoveEnemy(enemyManager);
         }
+
 
         // 增加物体的 Y 轴高度
         transform.position = new Vector3(transform.position.x, originalY + pickUpHeight, transform.position.z);
@@ -87,12 +88,12 @@ public class Interactable : MonoBehaviour
         transform.position = new Vector3(position.x, dropHeight, position.z);
 
         // 如果物体有敌人组件，启用敌人的 AI 移动，并更新目的地
-        if (enemyComponent != null)
+        if (enemyManager != null)
         {
-            enemyComponent.EnableAI();
+            enemyManager.EnableMovement();
 
             // 设置敌人的目的地为当前的位置，防止其返回原来的位置
-            enemyComponent.SetDestination(transform.position);
+            enemyManager.movement.SetDestination(transform.position);
         }
         this.GetComponent<BoxCollider>().enabled = true;
     }

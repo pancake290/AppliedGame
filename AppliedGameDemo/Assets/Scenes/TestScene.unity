@@ -708,7 +708,7 @@ MonoBehaviour:
   - {fileID: 998801240}
   - {fileID: 1359056611}
   enemiesInRoom: []
-  trashInRoom: []
+  itemInRoom: []
 --- !u!65 &195843923
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3717,7 +3717,7 @@ MonoBehaviour:
   adjacentRooms:
   - {fileID: 1359056611}
   enemiesInRoom: []
-  trashInRoom: []
+  itemInRoom: []
 --- !u!65 &995976245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3790,7 +3790,7 @@ MonoBehaviour:
   adjacentRooms:
   - {fileID: 195843922}
   enemiesInRoom: []
-  trashInRoom: []
+  itemInRoom: []
 --- !u!65 &998801241
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5250,7 +5250,7 @@ MonoBehaviour:
   - {fileID: 195843922}
   - {fileID: 995976244}
   enemiesInRoom: []
-  trashInRoom: []
+  itemInRoom: []
 --- !u!65 &1359056612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8257,7 +8257,7 @@ MonoBehaviour:
     m_Extent: {x: 0, y: 0, z: 0}
   adjacentRooms: []
   enemiesInRoom: []
-  trashInRoom: []
+  itemInRoom: []
 --- !u!65 &2118098508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8453,7 +8453,7 @@ PrefabInstance:
     - target: {fileID: 2213315469068561722, guid: 0314b13c9200ae64ea55d95321f0a7ec,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.39
+      value: -1.53
       objectReference: {fileID: 0}
     - target: {fileID: 2213315469068561722, guid: 0314b13c9200ae64ea55d95321f0a7ec,
         type: 3}
@@ -8463,7 +8463,7 @@ PrefabInstance:
     - target: {fileID: 2213315469068561722, guid: 0314b13c9200ae64ea55d95321f0a7ec,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.29
+      value: -3.01
       objectReference: {fileID: 0}
     - target: {fileID: 2213315469068561722, guid: 0314b13c9200ae64ea55d95321f0a7ec,
         type: 3}

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5709754759944040161}
   - component: {fileID: 6412358771906653264}
   - component: {fileID: 1494189157136883983}
+  - component: {fileID: 334029809142622995}
   m_Layer: 0
   m_Name: TrashNew
   m_TagString: Interactable
@@ -148,3 +149,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpHeight: 2
   dropHeight: 0.79
+--- !u!114 &334029809142622995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2255914851367389145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c521fc6bdd1c924b8fb465f06ee7601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: Trash

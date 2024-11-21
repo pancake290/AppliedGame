@@ -11,7 +11,7 @@ public class RoomUnit : MonoBehaviour
 
     // 房间内的敌人列表
     public List<EnemyManager> enemiesInRoom = new List<EnemyManager>();
-    public List<GameObject> trashInRoom = new List<GameObject>();
+    public List<ItemManager> itemInRoom = new List<ItemManager>();
 
     private void Awake()
     {
@@ -27,9 +27,9 @@ public class RoomUnit : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)//当敌人进到房间范围，被添加到房间敌人列表中
+    private void OnTriggerEnter(Collider other)
     {
-        EnemyManager enemy = other.GetComponent<EnemyManager>();
+        EnemyManager enemy = other.GetComponent<EnemyManager>();//当敌人进到房间范围，被添加到房间敌人列表中
         if (enemy != null)
         {
             if (!enemiesInRoom.Contains(enemy))
@@ -38,19 +38,19 @@ public class RoomUnit : MonoBehaviour
                 //enemy.SetCurrentRoom(this);
             }
         }
-        if (other.tag == "Trash") 
+        ItemManager item = other.GetComponent<ItemManager>();//当垃圾人进到房间范围，被添加到房间Item列表中
+        if (item != null) 
         {
-            if (!trashInRoom.Contains(other.gameObject))
+            if (!itemInRoom.Contains(item))
             {
-                trashInRoom.Add(other.gameObject);
-                //enemy.SetCurrentRoom(this);
+                itemInRoom.Add(item);
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)//当敌人出了房间范围，被从敌人列表移除
+    private void OnTriggerExit(Collider other)
     {
-        EnemyManager enemy = other.GetComponent<EnemyManager>();
+        EnemyManager enemy = other.GetComponent<EnemyManager>();//当敌人出了房间范围，被从敌人列表移除
         if (enemy != null)
         {
             if (enemiesInRoom.Contains(enemy))
@@ -59,9 +59,17 @@ public class RoomUnit : MonoBehaviour
                 //enemy.SetCurrentRoom(null);
             }
         }
+        ItemManager item = other.GetComponent<ItemManager>();
+        if (item != null)
+        {
+            if (!itemInRoom.Contains(item))
+            {
+                itemInRoom.Remove(item);
+            }
+        }
     }
 
-    public void RemoveEnemy(EnemyManager enemy)
+    public void RemoveEnemy(EnemyManager enemy)//给其它功能用来移除移除敌人，比如敌人死亡
     {
         if (enemiesInRoom.Contains(enemy))
         {

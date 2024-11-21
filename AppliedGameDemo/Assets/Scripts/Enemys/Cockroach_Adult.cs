@@ -16,6 +16,9 @@ public class Cockroach_Adult : EnemyTurnLogic, IBreeding
     public override void PerformMove()
     {
         //蟑螂移动房间
+        RoomUnit targetRoom = RoomSelector.GetRoomWithMostTargetItem(enemyManager, "Trash");
+        if (targetRoom == enemyManager.currentRoom) return;
+        enemyManager.MoveToRoom(targetRoom);
     }
 
     public override void PerformAttack()
