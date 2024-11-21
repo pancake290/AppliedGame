@@ -16,12 +16,12 @@ public class Interactable : MonoBehaviour
     private float originalY;
 
     // 引用敌人组件（如果有）
-    private Enemy enemyComponent;
+    private EnemyAIMovement enemyComponent;
 
     private void Start()
     {
         // 获取敌人组件（如果存在）
-        enemyComponent = GetComponent<Enemy>();
+        enemyComponent = GetComponent<EnemyAIMovement>();
 
         // 初始化物体的原始高度
         originalY = transform.position.y;

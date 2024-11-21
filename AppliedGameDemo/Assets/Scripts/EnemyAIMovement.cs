@@ -1,10 +1,8 @@
 using UnityEngine;
 using Pathfinding; // 引用 A* Pathfinding 命名空间
 
-public class Enemy : MonoBehaviour
+public class EnemyAIMovement : MonoBehaviour
 {
-    public RoomUnit currentRoom;
-
     private RichAI ai; // 引用 RichAI 组件
     private float idleTime; // 敌人下一次移动的等待时间
     public float minIdleTime = 1f;
@@ -16,6 +14,8 @@ public class Enemy : MonoBehaviour
     private float pickUpHeight = 2f; // 抓起时增加的高度
     private float originalY; // 记录敌人原本的 Y 轴高度
 
+    private EnemyManager enemyManager;
+
     private void Start()
     {
         ai = GetComponent<RichAI>();
@@ -24,18 +24,19 @@ public class Enemy : MonoBehaviour
             Debug.LogError("敌人缺少 RichAI 组件！");
         }
         idleTime = Random.Range(minIdleTime, maxIdleTime);
+        enemyManager = GetComponent<EnemyManager>();
     }
 
     private void Update()
     {
         
-            // 敌人在房间内随机移动的逻辑（保持不变）
-            if (!isMoving && currentRoom != null)
+            // 敌人在房间内随机移动的逻辑
+            if (!isMoving && enemyManager.currentRoom != null)
             {
                 idleTime -= Time.deltaTime;
                 if (idleTime <= 0)
                 {
-                    MoveToRandomPointInRoom(currentRoom);
+                    MoveToRandomPointInRoom(enemyManager.currentRoom);
                     idleTime = Random.Range(minIdleTime, maxIdleTime);
                 }
             }
@@ -46,21 +47,6 @@ public class Enemy : MonoBehaviour
                 isMoving = false;
             }
 
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        RoomUnit rooom = other.GetComponent<RoomUnit>();
-        if (rooom != null)
-        {
-            this.currentRoom = rooom;
-        }
-    }
-
-    // 设置当前所在的房间
-    public void SetCurrentRoom(RoomUnit room)
-    {
-        currentRoom = room;
     }
 
     // 在房间内移动到随机点

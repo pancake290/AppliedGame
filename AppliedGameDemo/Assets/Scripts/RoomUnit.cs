@@ -10,7 +10,7 @@ public class RoomUnit : MonoBehaviour
     public List<RoomUnit> adjacentRooms = new List<RoomUnit>();
 
     // 房间内的敌人列表
-    public List<Enemy> enemiesInRoom = new List<Enemy>();
+    public List<EnemyManager> enemiesInRoom = new List<EnemyManager>();
     public List<GameObject> trashInRoom = new List<GameObject>();
 
     private void Awake()
@@ -27,9 +27,9 @@ public class RoomUnit : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)//当敌人进到房间范围，被添加到房间敌人列表中
     {
-        Enemy enemy = other.GetComponent<Enemy>();
+        EnemyManager enemy = other.GetComponent<EnemyManager>();
         if (enemy != null)
         {
             if (!enemiesInRoom.Contains(enemy))
@@ -48,9 +48,9 @@ public class RoomUnit : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)//当敌人出了房间范围，被从敌人列表移除
     {
-        Enemy enemy = other.GetComponent<Enemy>();
+        EnemyManager enemy = other.GetComponent<EnemyManager>();
         if (enemy != null)
         {
             if (enemiesInRoom.Contains(enemy))
@@ -58,6 +58,15 @@ public class RoomUnit : MonoBehaviour
                 enemiesInRoom.Remove(enemy);
                 //enemy.SetCurrentRoom(null);
             }
+        }
+    }
+
+    public void RemoveEnemy(EnemyManager enemy)
+    {
+        if (enemiesInRoom.Contains(enemy))
+        {
+            enemy.gameObject.transform.GetComponent<BoxCollider>().enabled = false;
+            enemiesInRoom.Remove(enemy);
         }
     }
 }
