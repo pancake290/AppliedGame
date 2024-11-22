@@ -39,13 +39,27 @@ public class InteractableManager : MonoBehaviour
             {
                 enemy.turnLogic.PerformMove();
                 //await Task.Delay(50);
+
+            }
+            foreach (EnemyManager enemy in room.enemiesInRoom)
+            {
                 enemy.turnLogic.PerformReproduce();
                 //await Task.Delay(50);
+
+            }
+            foreach (EnemyManager enemy in room.enemiesInRoom)
+            {
                 enemy.turnLogic.PerformAttack();
                 //await Task.Delay(50);
+
+            }
+            foreach (EnemyManager enemy in room.enemiesInRoom)
+            {
                 enemy.turnLogic.PerformEndTurn();
                 //await Task.Delay(50);
+
             }
+
         }
         RoundManager.Instance.UpdateGameState(GameState.PlayerTurn);
 
