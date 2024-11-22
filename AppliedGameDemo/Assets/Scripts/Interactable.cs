@@ -97,7 +97,11 @@ public class Interactable : MonoBehaviour
             enemyManager.EnableMovement();
 
             // 设置敌人的目的地为当前的位置，防止其返回原来的位置
-            enemyManager.movement.SetDestination(transform.position);
+            if(enemyManager.movement)
+            {
+                enemyManager.movement.SetDestination(transform.position);
+            }
+            
         }
         this.GetComponent<BoxCollider>().enabled = true;
     }
