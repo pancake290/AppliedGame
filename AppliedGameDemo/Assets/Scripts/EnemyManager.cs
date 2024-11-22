@@ -11,9 +11,9 @@ public class EnemyManager : MonoBehaviour
     public RoomUnit currentRoom;
     public string enemyType;
 
-    public bool isPerformMove = false;
-    public bool isPerformAttack = false;
-    public bool isPerformReproduce = false;
+    //public bool isPerformMove = false;
+    //public bool isPerformAttack = false;
+    //public bool isPerformReproduce = false;
 
     //private void Update()
     //{

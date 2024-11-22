@@ -8,7 +8,7 @@ public class Cockroach_Egg : EnemyTurnLogic
     public override string enemyType => "Cockroach_Egg";
     public GameObject cockroachAdult;
 
-    private int incubateCD = 2;
+    private int incubateCD = 1;
 
     private void Start()
     {

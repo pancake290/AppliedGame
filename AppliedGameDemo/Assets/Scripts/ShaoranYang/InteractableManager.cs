@@ -43,6 +43,8 @@ public class InteractableManager : MonoBehaviour
                 //await Task.Delay(50);
                 enemy.turnLogic.PerformAttack();
                 //await Task.Delay(50);
+                enemy.turnLogic.PerformEndTurn();
+                //await Task.Delay(50);
             }
         }
         RoundManager.Instance.UpdateGameState(GameState.PlayerTurn);
@@ -51,12 +53,12 @@ public class InteractableManager : MonoBehaviour
 
     private void LockMouse()
     {
-        Cursor.lockState = CursorLockMode.Locked; // 锁定鼠标
-        Cursor.visible = false; // 隐藏光标
+        Cursor.lockState = CursorLockMode.Locked; // 閿佸畾榧犳爣
+        Cursor.visible = false; // 闅愯棌鍏夋爣
     }
     private void UnlockMouse()
     {
-        Cursor.lockState = CursorLockMode.None; // 解除锁定
-        Cursor.visible = true; // 显示光标
+        Cursor.lockState = CursorLockMode.None; // 瑙ｉ櫎閿佸畾
+        Cursor.visible = true; // 鏄剧ず鍏夋爣
     }
 }
