@@ -18,6 +18,8 @@ public class Interactable : MonoBehaviour
     // 引用敌人组件（如果有）
     private EnemyManager enemyManager;
 
+    private Camera mainCamera;
+
     private void Start()
     {
         // 获取敌人组件（如果存在）
@@ -25,6 +27,8 @@ public class Interactable : MonoBehaviour
 
         // 初始化物体的原始高度
         originalY = transform.position.y;
+
+        mainCamera = Camera.main;
     }
 
     private void Update()
@@ -38,7 +42,7 @@ public class Interactable : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 // 从摄像机向鼠标位置发射射线
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {

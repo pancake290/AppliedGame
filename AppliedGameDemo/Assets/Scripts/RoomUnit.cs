@@ -11,7 +11,11 @@ public class RoomUnit : MonoBehaviour
 
     // 房间内的敌人列表
     public List<EnemyManager> enemiesInRoom = new List<EnemyManager>();
+    public List<EnemyManager> enemiesInRoomToAdd = new List<EnemyManager>();
+    public List<EnemyManager> enemiesInRoomToRemove = new List<EnemyManager>();
     public List<ItemManager> itemInRoom = new List<ItemManager>();
+    public List<ItemManager> itemInRoomToAdd = new List<ItemManager>();
+    public List<ItemManager> itemInRoomToRemove = new List<ItemManager>();
 
     private void Awake()
     {
@@ -34,7 +38,7 @@ public class RoomUnit : MonoBehaviour
         {
             if (!enemiesInRoom.Contains(enemy))
             {
-                enemiesInRoom.Add(enemy);
+                enemiesInRoomToAdd.Add(enemy);
                 //enemy.SetCurrentRoom(this);
             }
         }
@@ -43,7 +47,7 @@ public class RoomUnit : MonoBehaviour
         {
             if (!itemInRoom.Contains(item))
             {
-                itemInRoom.Add(item);
+                itemInRoomToAdd.Add(item);
             }
         }
     }
@@ -55,7 +59,7 @@ public class RoomUnit : MonoBehaviour
         {
             if (enemiesInRoom.Contains(enemy))
             {
-                enemiesInRoom.Remove(enemy);
+                enemiesInRoomToRemove.Add(enemy);
                 //enemy.SetCurrentRoom(null);
             }
         }
@@ -64,7 +68,7 @@ public class RoomUnit : MonoBehaviour
         {
             if (!itemInRoom.Contains(item))
             {
-                itemInRoom.Remove(item);
+                itemInRoomToRemove.Add(item);
             }
         }
     }
@@ -74,7 +78,31 @@ public class RoomUnit : MonoBehaviour
         if (enemiesInRoom.Contains(enemy))
         {
             enemy.gameObject.transform.GetComponent<BoxCollider>().enabled = false;
+            enemiesInRoomToRemove.Add(enemy);
+        }
+    }
+
+    public void UpdateList() 
+    {
+        foreach (var enemy in enemiesInRoomToAdd)
+        {
+            enemiesInRoom.Add(enemy);
+        }
+        enemiesInRoomToAdd.Clear();
+        foreach (var enemy in enemiesInRoomToRemove)
+        {
             enemiesInRoom.Remove(enemy);
         }
+        enemiesInRoomToRemove.Clear();
+        foreach (var item in itemInRoomToAdd)
+        {
+            itemInRoom.Add(item);
+        }
+        itemInRoomToAdd.Clear();
+        foreach (var item in itemInRoomToRemove)
+        {
+            itemInRoom.Remove(item);
+        }
+        itemInRoomToRemove.Clear();
     }
 }

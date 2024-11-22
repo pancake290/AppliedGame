@@ -15,24 +15,24 @@ public class EnemyManager : MonoBehaviour
     public bool isPerformAttack = false;
     public bool isPerformReproduce = false;
 
-    private void Update()
-    {
-        if (isPerformMove == true)
-        {
-            PerformTurnPhase(TurnPhase.Move);
-            isPerformMove = false;
-        }
-        if (isPerformAttack == true)
-        {
-            PerformTurnPhase(TurnPhase.Attack);
-            isPerformAttack = false;
-        }
-        if (isPerformReproduce == true)
-        {
-            PerformTurnPhase(TurnPhase.Reproduce);
-            isPerformReproduce = false;
-        }
-    }
+    //private void Update()
+    //{
+    //    if (isPerformMove == true)
+    //    {
+    //        PerformTurnPhase(TurnPhase.Move);
+    //        isPerformMove = false;
+    //    }
+    //    if (isPerformAttack == true)
+    //    {
+    //        PerformTurnPhase(TurnPhase.Attack);
+    //        isPerformAttack = false;
+    //    }
+    //    if (isPerformReproduce == true)
+    //    {
+    //        PerformTurnPhase(TurnPhase.Reproduce);
+    //        isPerformReproduce = false;
+    //    }
+    //}
 
     void Awake()
     {
@@ -64,21 +64,21 @@ public class EnemyManager : MonoBehaviour
         movement.DisableAI();
     }
 
-    public void PerformTurnPhase(TurnPhase phase)
-    {
-        switch (phase)
-        {
-            case TurnPhase.Move:
-                turnLogic.PerformMove();
-                break;
-            case TurnPhase.Reproduce:
-                turnLogic.PerformReproduce();
-                break;
-            case TurnPhase.Attack:
-                turnLogic.PerformAttack();
-                break;
-        }
-    }
+    //public void PerformTurnPhase(TurnPhase phase)
+    //{
+    //    switch (phase)
+    //    {
+    //        case TurnPhase.Move:
+    //            turnLogic.PerformMove();
+    //            break;
+    //        case TurnPhase.Reproduce:
+    //            turnLogic.PerformReproduce();
+    //            break;
+    //        case TurnPhase.Attack:
+    //            turnLogic.PerformAttack();
+    //            break;
+    //    }
+    //}
 
     public void MoveToRoom(RoomUnit targetRoom)
     {

@@ -18,8 +18,8 @@ public class RoundManager : MonoBehaviour
     {
         PlayerTurn,
         EnemyTurn,
-        Victory,
-        Lose
+        //Victory,
+        //Lose
     }
 
     public void UpdateGameState(GameState newState)
@@ -34,12 +34,12 @@ public class RoundManager : MonoBehaviour
             case GameState.EnemyTurn:
                 Debug.Log("EnemyTurn");
                 break;
-            case GameState.Victory:
-                Debug.Log("Victory");
-                break;
-            case GameState.Lose:
-                Debug.Log("Lose");
-                break;
+            //case GameState.Victory:
+            //    Debug.Log("Victory");
+            //    break;
+            //case GameState.Lose:
+            //    Debug.Log("Lose");
+            //    break;
         }
 
         OnStateChanged?.Invoke(newState);
