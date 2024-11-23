@@ -1437,6 +1437,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 381303828}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &409783028
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1138866794973571187, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2068888881}
+    - target: {fileID: 4550702728705750443, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550702728705750443, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550702728705750443, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550702728705750443, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550702728705750443, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550702728705750443, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550702728705750443, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550702728705750443, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550702728705750443, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550702728705750443, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161876654933439832, guid: cfcad2a422913bc47bd99a39c230eb38,
+        type: 3}
+      propertyPath: m_Name
+      value: Tarantula (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cfcad2a422913bc47bd99a39c230eb38, type: 3}
 --- !u!1001 &422460826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3484,7 +3557,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2974d97fc3aa79a448101bdf6f174999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rooms: []
+  rooms:
+  - {fileID: 998801240}
+  - {fileID: 1359056611}
+  - {fileID: 995976244}
+  - {fileID: 195843922}
   turnCount: 1
   currentPhase: 1
 --- !u!4 &845648116
@@ -9408,6 +9485,7 @@ SceneRoots:
   - {fileID: 2152537153157992748}
   - {fileID: 1352190604}
   - {fileID: 5006519702356446390}
+  - {fileID: 409783028}
   - {fileID: 613782079}
   - {fileID: 6029412878588453295}
   - {fileID: 8812523055500046}
