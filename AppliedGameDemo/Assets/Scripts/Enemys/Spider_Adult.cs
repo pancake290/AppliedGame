@@ -22,9 +22,9 @@ public class Spider_Adult : EnemyTurnLogic
     public override void PerformAttack()
     {
         //蜘蛛会吃蟑螂。或其它虫子？
-        EnemyManager targetFood = enemyManager.FindEnemyinMyRoom(enemyManager,"Spider_Adult");
-        Debug.Log(targetFood);
-        if (targetFood)
+        EnemyManager targetFood = enemyManager.FindEnemyinMyRoom(enemyManager,"Cockroach_Adult");
+        Debug.Log("蜘蛛找到了" + targetFood);
+        if (targetFood != null)
         {
             targetFood.GoDie();
             foodValue += 1;

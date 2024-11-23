@@ -8,7 +8,8 @@ public class EnemyAIMovement : MonoBehaviour
     public float minIdleTime = 1f;
     public float maxIdleTime = 3f;
 
-    private bool isMoving = false;
+    public bool isMoving = false;
+    public bool isSpecialMoving = false;
     public bool isPickedUp = false;
 
     private float pickUpHeight = 2f; // 抓起时增加的高度
@@ -45,6 +46,7 @@ public class EnemyAIMovement : MonoBehaviour
             if (isMoving && ai.reachedEndOfPath && !ai.pathPending)
             {
                 isMoving = false;
+                isSpecialMoving = false;
             }
 
     }
@@ -78,6 +80,7 @@ public class EnemyAIMovement : MonoBehaviour
             ai.destination = targetPoint;
             ai.SearchPath();
             isMoving = true;
+            isSpecialMoving = true;
         }
     }
 

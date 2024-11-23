@@ -17,21 +17,6 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if (isPerformMove == true)
-        {
-            PerformTurnPhase(TurnPhase.Move);
-            isPerformMove = false;
-        }
-        if (isPerformAttack == true)
-        {
-            PerformTurnPhase(TurnPhase.Attack);
-            isPerformAttack = false;
-        }
-        if (isPerformReproduce == true)
-        {
-            PerformTurnPhase(TurnPhase.Reproduce);
-            isPerformReproduce = false;
-        }
     }
 
     void Awake()

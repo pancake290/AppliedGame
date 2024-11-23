@@ -77,4 +77,12 @@ public class RoomUnit : MonoBehaviour
             enemiesInRoom.Remove(enemy);
         }
     }
+    public void RemoveItem(ItemManager item)//给其它功能用来移除移除物体
+    {
+        if (itemInRoom.Contains(item))
+        {
+            item.gameObject.transform.GetComponent<BoxCollider>().enabled = false;
+            itemInRoom.Remove(item);
+        }
+    }
 }

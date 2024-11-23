@@ -28,6 +28,7 @@ public class Cockroach_Adult : EnemyTurnLogic, IBreeding
 
     public override void PerformReproduce()
     {
+        
         //繁殖逻辑
         if (IsBreeding == false)
         {
@@ -42,6 +43,7 @@ public class Cockroach_Adult : EnemyTurnLogic, IBreeding
                         trueEnemy.IsBreeding = true;
                         IsBreeding = true;
                         Instantiate(cockroachEgg, transform.position, transform.rotation);
+                        return;
                     }
                     else continue; // 找到后立即返回
                 }

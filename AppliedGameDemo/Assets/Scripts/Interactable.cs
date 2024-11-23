@@ -72,6 +72,12 @@ public class Interactable : MonoBehaviour
             enemyManager.DisableMovement();
             enemyManager.currentRoom.RemoveEnemy(enemyManager);
         }
+        //如果有物体有ItemManager组件，移出房间
+        ItemManager item = GetComponent<ItemManager>();
+        if (item != null)
+        {
+            item.currentRoom.RemoveItem(item);
+        }
 
 
         // 增加物体的 Y 轴高度
@@ -90,10 +96,13 @@ public class Interactable : MonoBehaviour
         // 如果物体有敌人组件，启用敌人的 AI 移动，并更新目的地
         if (enemyManager != null)
         {
-            enemyManager.EnableMovement();
+            if(enemyManager.movement != null)
+            {
+                enemyManager.EnableMovement();
 
-            // 设置敌人的目的地为当前的位置，防止其返回原来的位置
-            enemyManager.movement.SetDestination(transform.position);
+                // 设置敌人的目的地为当前的位置，防止其返回原来的位置
+                enemyManager.movement.SetDestination(transform.position);
+            }
         }
         this.GetComponent<BoxCollider>().enabled = true;
     }

@@ -8,7 +8,7 @@ public class Spider_Egg : EnemyTurnLogic
     public override string enemyType => "Spider_Egg";
     public GameObject spiderAdult;
 
-    private int incubateCD = 2;
+    private int incubateCD = 1;
 
     private void Start()
     {
@@ -32,6 +32,7 @@ public class Spider_Egg : EnemyTurnLogic
         if(incubateCD <= 0)
         {
             Instantiate(spiderAdult, transform.position, transform.rotation);
+            enemyManager.GoDie();
         }
     }
 }
