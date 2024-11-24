@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Text turnText;
     public Text phaseText;
     public Text energy;
+    public Slider slider;
 
     private void Awake()
     {
@@ -23,6 +24,10 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+        UpdateEnergy();
+    }
 
     public void UpdatePhaseInfo(int turnCount, TurnManager.Phase phase)
     {
@@ -32,6 +37,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateEnergy()
     {
-        energy.text = "Energy: " + TurnManager.Instance.actionPoints;
+        energy.text = TurnManager.Instance.actionPoints.ToString();
+        slider.value = (float)TurnManager.Instance.actionPoints / 2.0f;
     }
 }

@@ -76,6 +76,11 @@ public class RoomUnit : MonoBehaviour
             enemy.gameObject.transform.GetComponent<BoxCollider>().enabled = false;
             enemiesInRoom.Remove(enemy);
         }
+        RoomIll roomIll = GetComponent<RoomIll>();
+        if (roomIll != null)
+        {
+            roomIll.HideCard();
+        }
     }
     public void RemoveItem(ItemManager item)//给其它功能用来移除移除物体
     {
@@ -83,6 +88,11 @@ public class RoomUnit : MonoBehaviour
         {
             item.gameObject.transform.GetComponent<BoxCollider>().enabled = false;
             itemInRoom.Remove(item);
+        }
+        RoomIll roomIll = GetComponent<RoomIll>();
+        if(roomIll != null)
+        {
+            roomIll.HideCard();
         }
     }
 }

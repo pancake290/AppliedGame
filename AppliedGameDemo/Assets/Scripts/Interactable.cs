@@ -161,6 +161,7 @@ public class Interactable : MonoBehaviour
     // 当鼠标点击物体时，抓起物体
     private void OnMouseDown()
     {
+        Debug.Log("点击可交互物体");
         if (!isPickedUp)
         {
             PickUp();
