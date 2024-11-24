@@ -12,19 +12,19 @@ public class Interactable : MonoBehaviour
 
     private bool isPickedUp = false;
 
-    // 记录物体的原始高度
+    // 记录物体的原始位置等信息
     private float originalY;
+    private Vector3 oriposition;
+    private RoomUnit oriRoom;
 
     // 引用敌人组件（如果有）
     private EnemyManager enemyManager;
 
     private void Start()
     {
+        originalY = transform.position.y;
         // 获取敌人组件（如果存在）
         enemyManager = GetComponent<EnemyManager>();
-
-        // 初始化物体的原始高度
-        originalY = transform.position.y;
     }
 
     private void Update()
@@ -47,7 +47,7 @@ public class Interactable : MonoBehaviour
                     if (room != null)
                     {
                         // 放下物体到点击的位置
-                        PutDown(hit.point);
+                        PutDown(hit.point, room);
                     }
                     else
                     {
@@ -63,8 +63,17 @@ public class Interactable : MonoBehaviour
     public void PickUp()
     {
         if (isPickedUp) return;
+        if (TurnManager.Instance.actionPoints <= 0)
+        {
+            Debug.Log("No action points left");
+            return;
+        }
 
         isPickedUp = true;
+
+        oriposition = transform.position;
+        oriRoom = enemyManager.currentRoom;
+        if (oriRoom == null) oriRoom = GetComponent<ItemManager>().currentRoom;
 
         // 如果物体有敌人组件，禁用敌人的 AI 移动，移出房间
         if (enemyManager != null)
@@ -86,9 +95,26 @@ public class Interactable : MonoBehaviour
     }
 
     // 放下物体
-    public void PutDown(Vector3 position)
+    public void PutDown(Vector3 position, RoomUnit room)
     {
         isPickedUp = false;
+        Debug.Log(0);
+        if (enemyManager != null)
+        {
+            Debug.Log(1);
+            if(room != enemyManager.currentRoom)
+            {
+                Debug.Log(2);
+                TurnManager.Instance.actionPoints -= 1;
+                TurnManager.Instance.undoStack.Push(new PickupAction
+                {
+                    Object = gameObject,
+                    OriginalRoom = oriRoom,
+                    OriginalPosition = oriposition
+                });
+            }
+            Debug.Log(3);
+        }
 
         // 更新物体的位置，Y 轴高度为固定的 dropHeight
         transform.position = new Vector3(position.x, dropHeight, position.z);
@@ -104,6 +130,7 @@ public class Interactable : MonoBehaviour
                 enemyManager.movement.SetDestination(transform.position);
             }
         }
+        UIManager.Instance.UpdateEnergy();
         this.GetComponent<BoxCollider>().enabled = true;
     }
 

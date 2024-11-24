@@ -7,8 +7,12 @@ public class TurnManager : MonoBehaviour
 {
     public static TurnManager Instance;
     public List<RoomUnit> rooms = new List<RoomUnit>();
+    public RoomUnit destroyRoom;
 
     public int turnCount = 1;
+    public int actionPoints = 2;
+
+    public Stack<PickupAction> undoStack = new Stack<PickupAction>(); // 撤销操作栈
     public enum Phase { PlayerPhase, EnemyPhase }
     public Phase currentPhase;
 
@@ -28,7 +32,43 @@ public class TurnManager : MonoBehaviour
 
     public void OnNextTurnButtonClicked()
     {
+        //玩家回合结束
+        actionPoints = 0;
+        UIManager.Instance.UpdateEnergy();
+        undoStack.Clear();
+
+        List<EnemyManager> enemiesCopy = new List<EnemyManager>(destroyRoom.enemiesInRoom);
+        foreach (EnemyManager enemy in enemiesCopy)
+        {
+            enemy.GoDie();
+        }
+        List<ItemManager> itemsCopy = new List<ItemManager>(destroyRoom.itemInRoom);
+        foreach (ItemManager item in itemsCopy)
+        {
+            item.GoDie();
+        }
         StartEnemyTurn();
+    }
+
+    public void OnUndoButtonClicked()
+    {
+        if(undoStack.Count == 0)
+        {
+            Debug.Log("没有可以撤回的操作");
+            return;
+        }
+
+        PickupAction undoAction = undoStack.Pop();
+        undoAction.Object.transform.position = undoAction.OriginalPosition;
+        EnemyAIMovement aImovement = undoAction.Object.GetComponent<EnemyAIMovement>();
+        if (aImovement != null)
+        {
+            aImovement.DisableAI();
+            aImovement.SetDestination(aImovement.gameObject.transform.position);
+            aImovement.EnableAI();
+        }
+        actionPoints += 1;
+        UIManager.Instance.UpdateEnergy();
     }
 
     public void StartEnemyTurn()
@@ -54,8 +94,10 @@ public class TurnManager : MonoBehaviour
         yield return StartCoroutine(EnemyEndTurnPhase());
 
         // 回合结束，进入玩家阶段
+        actionPoints = 2;
         turnCount++;
         currentPhase = Phase.PlayerPhase;
+        UIManager.Instance.UpdateEnergy();
         UIManager.Instance.UpdatePhaseInfo(turnCount, currentPhase);
         // 通知玩家可以行动
     }
@@ -138,4 +180,11 @@ public class TurnManager : MonoBehaviour
         }
         return true;
     }
+}
+
+public class PickupAction
+{
+    public GameObject Object;  // 被拾取的物体
+    public RoomUnit OriginalRoom;  // 原始所在房间
+    public Vector3 OriginalPosition; // 原始位置
 }

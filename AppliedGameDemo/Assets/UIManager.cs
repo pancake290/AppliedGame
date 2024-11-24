@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     public Text turnText;
     public Text phaseText;
+    public Text energy;
 
     private void Awake()
     {
@@ -27,5 +28,10 @@ public class UIManager : MonoBehaviour
     {
         turnText.text = "回合数: " + turnCount;
         phaseText.text = "当前阶段: " + (phase == TurnManager.Phase.PlayerPhase ? "玩家阶段" : "敌人阶段");
+    }
+
+    public void UpdateEnergy()
+    {
+        energy.text = "Energy: " + TurnManager.Instance.actionPoints;
     }
 }

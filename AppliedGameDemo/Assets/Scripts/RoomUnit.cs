@@ -9,7 +9,7 @@ public class RoomUnit : MonoBehaviour
     // 相邻房间的列表
     public List<RoomUnit> adjacentRooms = new List<RoomUnit>();
 
-    // 房间内的敌人列表
+    // 房间内的敌人和物品列表
     public List<EnemyManager> enemiesInRoom = new List<EnemyManager>();
     public List<ItemManager> itemInRoom = new List<ItemManager>();
 

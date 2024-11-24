@@ -15,4 +15,11 @@ public class ItemManager : MonoBehaviour
             this.currentRoom = rooom;
         }
     }
+
+    public void GoDie()
+    {
+        currentRoom.RemoveItem(this);
+        Destroy(this.gameObject);
+        //其它逻辑（创建一个死亡特效等？）
+    }
 }
