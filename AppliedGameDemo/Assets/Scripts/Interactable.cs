@@ -72,8 +72,8 @@ public class Interactable : MonoBehaviour
         isPickedUp = true;
 
         oriposition = transform.position;
-        oriRoom = enemyManager.currentRoom;
-        if (oriRoom == null) oriRoom = GetComponent<ItemManager>().currentRoom;
+        //oriRoom = enemyManager.currentRoom;
+        //if (oriRoom == null) oriRoom = GetComponent<ItemManager>().currentRoom;
 
         // 如果物体有敌人组件，禁用敌人的 AI 移动，移出房间
         if (enemyManager != null)
@@ -98,13 +98,10 @@ public class Interactable : MonoBehaviour
     public void PutDown(Vector3 position, RoomUnit room)
     {
         isPickedUp = false;
-        Debug.Log(0);
         if (enemyManager != null)
         {
-            Debug.Log(1);
             if(room != enemyManager.currentRoom)
             {
-                Debug.Log(2);
                 TurnManager.Instance.actionPoints -= 1;
                 TurnManager.Instance.undoStack.Push(new PickupAction
                 {
@@ -113,7 +110,20 @@ public class Interactable : MonoBehaviour
                     OriginalPosition = oriposition
                 });
             }
-            Debug.Log(3);
+        }
+        ItemManager itemManager = GetComponent<ItemManager>();
+        if (itemManager != null)
+        {
+            if (room != itemManager.currentRoom)
+            {
+                TurnManager.Instance.actionPoints -= 1;
+                TurnManager.Instance.undoStack.Push(new PickupAction
+                {
+                    Object = gameObject,
+                    OriginalRoom = oriRoom,
+                    OriginalPosition = oriposition
+                });
+            }
         }
 
         // 更新物体的位置，Y 轴高度为固定的 dropHeight
