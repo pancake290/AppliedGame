@@ -20,6 +20,8 @@ public class Interactable : MonoBehaviour
     // 引用敌人组件（如果有）
     private EnemyManager enemyManager;
 
+    private bool isUseableItem = false;
+
     private void Start()
     {
         originalY = transform.position.y;
@@ -35,7 +37,7 @@ public class Interactable : MonoBehaviour
             FollowMouse();
 
             // 检测玩家是否松开鼠标左键放下物体
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 // 从摄像机向鼠标位置发射射线
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -48,9 +50,15 @@ public class Interactable : MonoBehaviour
                     {
                         // 放下物体到点击的位置
                         PutDown(hit.point, room);
+                        TurnManager.Instance.anythingInHand = false;
                     }
                     else
                     {
+                        if(isUseableItem == true)
+                        {
+                            GetComponent<UseableItem>().Action(hit.collider.gameObject);
+                            return;
+                        }
                         // 点击的位置不是房间，不能放下物体
                         Debug.Log("无法在此位置放下物体，请选择房间内的位置。");
                     }
@@ -70,6 +78,7 @@ public class Interactable : MonoBehaviour
         }
 
         isPickedUp = true;
+        TurnManager.Instance.anythingInHand = true;
 
         oriposition = transform.position;
         //oriRoom = enemyManager.currentRoom;
@@ -86,6 +95,12 @@ public class Interactable : MonoBehaviour
         if (item != null)
         {
             item.currentRoom.RemoveItem(item);
+        }
+        //如果物品是UseableItem
+        UseableItem useableItem = GetComponent<UseableItem>();
+        if(useableItem != null)
+        {
+            isUseableItem = true;
         }
 
 
@@ -159,8 +174,9 @@ public class Interactable : MonoBehaviour
     }
 
     // 当鼠标点击物体时，抓起物体
-    private void OnMouseDown()
+    private void OnMouseUp()
     {
+        if (TurnManager.Instance.anythingInHand == true) return;
         Debug.Log("点击可交互物体");
         if (!isPickedUp)
         {

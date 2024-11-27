@@ -16,6 +16,9 @@ public class TurnManager : MonoBehaviour
     public enum Phase { PlayerPhase, EnemyPhase }
     public Phase currentPhase;
 
+    public bool anythingInHand = false;
+    public GameObject goDiePoint;
+
     private void Awake()
     {
         if (Instance == null)
@@ -59,6 +62,15 @@ public class TurnManager : MonoBehaviour
         }
 
         PickupAction undoAction = undoStack.Pop();
+        if(undoAction.isSetActiveFalse == true)
+        {
+            undoAction.Object.transform.position = undoAction.OriginalPosition;
+            undoAction.Object.SetActive(true);
+            actionPoints += 1;
+            UIManager.Instance.UpdateEnergy();
+            return;
+        }
+
         undoAction.Object.transform.position = undoAction.OriginalPosition;
         EnemyAIMovement aImovement = undoAction.Object.GetComponent<EnemyAIMovement>();
         if (aImovement != null)
@@ -187,4 +199,5 @@ public class PickupAction
     public GameObject Object;  // 被拾取的物体
     public RoomUnit OriginalRoom;  // 原始所在房间
     public Vector3 OriginalPosition; // 原始位置
+    public bool isSetActiveFalse;//是不是给隐藏了
 }

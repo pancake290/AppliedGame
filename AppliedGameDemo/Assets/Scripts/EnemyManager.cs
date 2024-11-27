@@ -89,4 +89,16 @@ public class EnemyManager : MonoBehaviour
         Destroy(this.gameObject);
         //其它逻辑（创建一个死亡特效等？）
     }
+
+    public void PrepareGoDie()//这个方法只是把它隐藏
+    {
+        TurnManager.Instance.undoStack.Push(new PickupAction
+        {
+            Object = gameObject,
+            OriginalPosition = gameObject.transform.position,
+            isSetActiveFalse = true
+        });
+        this.currentRoom.RemoveEnemy(this);
+        gameObject.SetActive(false);
+    }
 }

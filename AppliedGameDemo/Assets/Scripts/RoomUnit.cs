@@ -73,7 +73,7 @@ public class RoomUnit : MonoBehaviour
     {
         if (enemiesInRoom.Contains(enemy))
         {
-            enemy.gameObject.transform.GetComponent<BoxCollider>().enabled = false;
+            //enemy.gameObject.transform.GetComponent<BoxCollider>().enabled = false;
             enemiesInRoom.Remove(enemy);
         }
         RoomIll roomIll = GetComponent<RoomIll>();
