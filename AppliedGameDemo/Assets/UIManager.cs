@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     public void UpdatePhaseInfo(int turnCount, TurnManager.Phase phase)
     {
         turnText.text = "Turn:" + turnCount;
-        phaseText.text = "Phase " + (phase == TurnManager.Phase.PlayerPhase ? "Player Phase" : "Bugs Phase");
+        phaseText.text =  (phase == TurnManager.Phase.PlayerPhase ? "Player's" : "Bugs'")+ " Phase" ;
     }
 
     public void UpdateEnergy()
