@@ -388,7 +388,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u87D1\u8782\u6BCF\u56DE\u5408\u4F1A\u5411\u9644\u8FD1\u5783\u573E\u6700\u591A\u7684\u4E00\u4E2A\u623F\u95F4\u79FB\u52A8\u3002\n\u540C\u4E00\u4E2A\u623F\u95F4\u91CC\u6BCF\u6709\u4E24\u53EA\u87D1\u8782\uFF0C\u56DE\u5408\u7ED3\u675F\u65F6\u5C31\u4F1A\u5728\u8BE5\u623F\u95F4\u4EA7\u751F\u4E00\u4E2A\u86CB\u3002"
+  m_Text: 'Cockroaches will move each turn to the nearby room with the most trash.
+
+    For
+    every two cockroaches in the same room, an egg will be produced in that room
+    at the end of the turn.'
 --- !u!1 &4176137114839013885
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +650,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u751F\u7269\u6548\u679C\u8BF4\u660E"
+  m_Text: Cockroach
 --- !u!1 &6105285871567120795
 GameObject:
   m_ObjectHideFlags: 0

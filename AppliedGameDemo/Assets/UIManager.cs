@@ -31,8 +31,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePhaseInfo(int turnCount, TurnManager.Phase phase)
     {
-        turnText.text = "回合数: " + turnCount;
-        phaseText.text = "当前阶段: " + (phase == TurnManager.Phase.PlayerPhase ? "玩家阶段" : "敌人阶段");
+        turnText.text = "Turn:" + turnCount;
+        phaseText.text = "Phase " + (phase == TurnManager.Phase.PlayerPhase ? "Player Phase" : "Bugs Phase");
     }
 
     public void UpdateEnergy()

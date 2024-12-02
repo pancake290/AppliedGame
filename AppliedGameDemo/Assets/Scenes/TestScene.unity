@@ -412,9 +412,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayImage: {fileID: 1935734846}
   images:
-  - {fileID: 21300000, guid: c4b276bd111cdd74681bc72be378c2a8, type: 3}
-  - {fileID: 21300000, guid: 1ee205aba5b3be345b26c3a14209845a, type: 3}
-  - {fileID: 21300000, guid: d7bf1fd6a70c3eb438b590ebca5f5765, type: 3}
+  - {fileID: 21300000, guid: aaf9891039b3a1a4493e052f0e2e7508, type: 3}
+  - {fileID: 21300000, guid: efa253ed618bd474f82a093c9fe3c585, type: 3}
+  - {fileID: 21300000, guid: da8db4faf43de894b898ad65ad9bd15c, type: 3}
 --- !u!1 &68005691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6932,7 +6932,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u73A9\u5BB6\u56DE\u5408"
+  m_Text: Player's Turn
 --- !u!222 &1114139026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12385,7 +12385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c4b276bd111cdd74681bc72be378c2a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aaf9891039b3a1a4493e052f0e2e7508, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

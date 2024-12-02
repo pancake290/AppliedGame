@@ -388,7 +388,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u72FC\u86DB\u4E0D\u4F1A\u81EA\u4E3B\u79FB\u52A8\u623F\u95F4\u3002\n\u6BCF\u56DE\u5408\uFF0C\u72FC\u86DB\u4F1A\u8BD5\u56FE\u5403\u6389\u81EA\u8EAB\u623F\u95F4\u91CC\u7684\u4E00\u53EA\u87D1\u8782\u3002\n\u5982\u679C\u6210\u529F\u5403\u6389\u4E86\u4E00\u53EA\u87D1\u8782\uFF0C\u90A3\u4E48\u72FC\u86DB\u4F1A\u751F\u4E0B\u4E00\u4E2A\u72FC\u86DB\u86CB\u3002"
+  m_Text: 'Tarantulas do not move between rooms on their own.
+
+    Each turn, a tarantula
+    will attempt to eat one cockroach in its current room.
+
+    If it successfully
+    eats a cockroach, the tarantula will lay a tarantula egg.'
 --- !u!1 &4176137114839013885
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +652,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u751F\u7269\u6548\u679C\u8BF4\u660E"
+  m_Text: Tarantulas
 --- !u!1 &6105285871567120795
 GameObject:
   m_ObjectHideFlags: 0

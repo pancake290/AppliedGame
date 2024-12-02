@@ -388,7 +388,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u87D1\u8782\u5375\u8FC71\u4E2A\u56DE\u5408\u5C31\u4F1A\u5B75\u5316\u62101\u53EA\u87D1\u8782\u3002"
+  m_Text: Cockroach eggs will hatch into a cockroach after 1 turn.
 --- !u!1 &4176137114839013885
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +646,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u751F\u7269\u6548\u679C\u8BF4\u660E"
+  m_Text: Cockroach Eggs
 --- !u!1 &6105285871567120795
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,4 +853,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u87D1\u8782\u662F\u4EE5\u5375\u9798\u7684\u5F62\u5F0F\u4EA7\u5375\u7684\u3002\u901A\u5E38\u6765\u8BB2\u4E00\u4E2A\u5375\u9798\u91CC\u4F1A\u6709\u6570\u5341\u4E2A\u87D1\u8782\u5375\u3002\n\u5375\u9798\u575A\u786C\u7684\u5916\u76AE\u4FDD\u62A4\u91CC\u9762\u7684\u5375\u4E0D\u4F1A\u53D7\u5230\u4F24\u5BB3\u3002\n\u770B\u8D77\u6765\u50CF\u7EA2\u8C46\u3002"
+  m_Text: 'Cockroaches lay eggs in the form of egg cases. Typically, an egg case
+    contains dozens of cockroach eggs.
+
+    The hard outer shell of the egg case
+    protects the eggs inside from damage.
+
+    It resembles a red bean in appearance.'

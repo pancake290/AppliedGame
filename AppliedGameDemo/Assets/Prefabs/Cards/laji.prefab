@@ -388,7 +388,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5783\u573E\u4F1A\u5438\u5F15\u87D1\u8782\u3002"
+  m_Text: 'Trash attracts cockroaches and aids in their reproduction.
+
+    At the
+    end of each turn, if a room contains both trash and a sufficient number of cockroaches,
+    the cockroaches will begin laying eggs.'
 --- !u!1 &4176137114839013885
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +650,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7269\u54C1\u6548\u679C\u8BF4\u660E"
+  m_Text: Item Description
 --- !u!1 &6105285871567120795
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,4 +857,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8FD9\u662F\u5783\u573E\u3002\n\u6709\u5F88\u591A\u866B\u5B50\u559C\u6B22\u5728\u5783\u573E\u6210\u5806\u7684\u5730\u65B9\u5F85\u7740\u3002\n\u56E0\u6B64\u4E00\u5B9A\u8981\u53CA\u65F6\u6E05\u7406\u5783\u573E\uFF0C\u4E0D\u7136\u866B\u5B50\u5C31\u4F1A\u805A\u96C6\u3002"
+  m_Text: 'Trash:
+
+
+    This is trash.
+
+    Many bugs prefer to stay in places where
+    trash piles up.
+
+    Be sure to clean up the trash promptly; otherwise, bugs
+    will start to gather.'
